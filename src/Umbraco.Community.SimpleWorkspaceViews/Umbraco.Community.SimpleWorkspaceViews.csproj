@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>12</LangVersion>
+        <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <StaticWebAssetBasePath>/</StaticWebAssetBasePath>
+        <ContentTargetFolders>.</ContentTargetFolders>
+        <Product>Umbraco.Community.SimpleWorkspaceViews</Product>
+        <PackageId>Umbraco.Community.SimpleWorkspaceViews</PackageId>
+        <Title>Umbraco.Community.SimpleWorkspaceViews</Title>
+        <Description>This packages aims to help developers quickly put together Umbraco Workspace Views using C# only.</Description>
+        <PackageTags>umbraco;umbraco-marketplace</PackageTags>
+        <Authors>jcdcdev</Authors>
+        <Copyright>$([System.DateTime]::UtcNow.ToString(`yyyy`)) © James Carter</Copyright>
+        <PackageProjectUrl>https://jcdc.dev/umbraco-packages/simple-workspace-views</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/jcdcdev/Umbraco.Community.SimpleWorkspaceViews</RepositoryUrl>
+        <PackageReadmeFile>README_nuget.md</PackageReadmeFile>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>images\icon.png</PackageIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Umbraco.Cms.Api.Common" Version="[14.0.0,15.0.0)"/>
+        <PackageReference Include="Umbraco.Cms.Api.Management" Version="[14.0.0,15.0.0)"/>
+        <PackageReference Include="Umbraco.Cms.Core" Version="[14.0.0,15.0.0)"/>
+        <PackageReference Include="Umbraco.Cms.Web.Website" Version="[14.0.0,15.0.0)"/>
+        <PackageReference Include="jcdcdev.Umbraco.Core" Version="[14.0.1,15.0.0)"/>
+    </ItemGroup>
+
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+        <Major>14</Major>
+        <Minor>$([System.DateTime]::UtcNow.ToString(`yyyy`))</Minor>
+        <Patch>$([System.DateTime]::UtcNow.ToString(`MMdd`).TrimStart(`0`))</Patch>
+        <Suffix>-alpha-$([System.DateTime]::UtcNow.ToString(`Hmm-ss`).TrimStart(`.`))</Suffix>
+        <PackageVersion>$(Major).$(Minor).$(Patch)$(Suffix)</PackageVersion>
+        <Version>$(PackageVersion)</Version>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\..\docs\icon.png" Pack="true" PackagePath="images\icon.png"/>
+        <None Include="..\..\docs\README_nuget.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <UpToDateCheckInput Remove="Views\Dashboards\ViewNotFound.cshtml"/>
+    </ItemGroup>
+</Project>
