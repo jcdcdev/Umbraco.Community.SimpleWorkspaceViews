@@ -1,0 +1,22 @@
+@using Umbraco.Community.SimpleWorkspaceViews.Core
+@inherits Umbraco.Community.SimpleWorkspaceViews.Web.WorkspaceViewViewPage
+@{
+    var path = Model.WorkspaceView.ViewPath;
+    var viewComponentName = Model.WorkspaceView.ViewComponent;
+}
+<uui-box>
+    <div slot="headline">
+        <umb-localize key="simpleWorkspaceViews_viewNotFound"></umb-localize>
+    </div>
+    <p>Please create either of the following:</p>
+    <ul>
+        <li>
+            A View located at <span>@path</span>
+            <pre><code title="@path" language="'CSHTML'">@Constants.ExampleView</code></pre>
+        </li>
+        <li>
+            A ViewComponent called <span>@viewComponentName</span>
+            <pre><code title="@viewComponentName" language="'csharp'">@Constants.ExampleViewComponent(viewComponentName)</code></pre>
+        </li>
+    </ul>
+</uui-box>
