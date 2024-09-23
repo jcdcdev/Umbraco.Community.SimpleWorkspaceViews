@@ -1,6 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: nuget
+    assignees: ${{ github.repository_owner }}
     directory: "/"
     schedule:
       interval: "daily"
@@ -11,6 +12,7 @@ updates:
     target-branch: "dev"
 
   - package-ecosystem: npm
+    assignees: ${{ github.repository_owner }}
     directory: "/"
     schedule:
       interval: "daily"
