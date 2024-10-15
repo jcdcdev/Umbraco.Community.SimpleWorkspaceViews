@@ -4,11 +4,11 @@
     "net9.0": {
       "jcdcdev.Umbraco.Core": {
         "type": "Direct",
-        "requested": "[14.0.2, 15.0.0)",
-        "resolved": "14.0.2",
-        "contentHash": "I8geaR2UxMW3dGTf7/e47TQpLvhGB8ZUcMpGH60wDV5gx1Y3zsOUTC+UHgJ4jH4QLV4uXbnMSiJin92lbxnBWA==",
+        "requested": "[15.0.0-alpha0002, 15.0.0-alpha9999)",
+        "resolved": "15.0.0-alpha0002",
+        "contentHash": "FLbmZYAg5ioIMJ0DMmj4VNxfLtR3FXbbwwM+qMv2cl24Wa9b5h+iX+pzW3ogneoMycFs9E8ASWI21i5cJBPZQQ==",
         "dependencies": {
-          "Umbraco.Cms.Web.Common": "[14.0.0, 15.0.0)"
+          "Umbraco.Cms.Web.Common": "[15.0.0-rc1, 15.0.0-rc999)"
         }
       },
       "Umbraco.Cms.Api.Common": {
