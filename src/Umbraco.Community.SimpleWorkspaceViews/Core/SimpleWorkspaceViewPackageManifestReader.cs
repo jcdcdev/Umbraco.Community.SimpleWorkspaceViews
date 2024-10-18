@@ -7,12 +7,12 @@ namespace Umbraco.Community.SimpleWorkspaceViews.Core;
 
 public class SimpleWorkspaceViewPackageManifestReader(ISimpleWorkspaceViewService simpleWorkspaceViewService) : IPackageManifestReader
 {
-    public async Task<IEnumerable<PackageManifest>> ReadPackageManifestsAsync()
+    public Task<IEnumerable<PackageManifest>> ReadPackageManifestsAsync()
     {
         var workspaceViews = simpleWorkspaceViewService.GetAll().ToList();
         if (!workspaceViews.Any())
         {
-            return Array.Empty<PackageManifest>();
+            return Task.FromResult<IEnumerable<PackageManifest>>(Array.Empty<PackageManifest>());
         }
 
         var extensions = new List<IManifest>();
@@ -64,6 +64,6 @@ public class SimpleWorkspaceViewPackageManifestReader(ISimpleWorkspaceViewServic
         }
 
         packageManifest.Extensions = extensions.OfType<object>().ToArray();
-        return new[] { packageManifest };
+        return Task.FromResult<IEnumerable<PackageManifest>>([packageManifest]);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Umbraco.Community.SimpleWorkspaceViews.Web;
 
-namespace TestSite.Fourteen.WorkspaceViews;
+namespace TestSite.WorkspaceViews;
 
 public class ThisWorkspaceViewHasNoViewWorkspaceView : SimpleWorkspaceView
 {
