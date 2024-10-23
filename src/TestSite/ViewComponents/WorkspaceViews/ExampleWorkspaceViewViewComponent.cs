@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Umbraco.Community.SimpleWorkspaceViews.Web;
 
-namespace TestSite.Fourteen.ViewComponents.WorkspaceViews;
+namespace TestSite.ViewComponents.WorkspaceViews;
 
 public class ExampleWorkspaceViewViewComponent : WorkspaceViewViewComponent
 {
