@@ -25,7 +25,7 @@ public class SimpleWorkspaceViewPackageManifestReader(ISimpleWorkspaceViewServic
             Extensions = []
         };
 
-        extensions.Add(new EntryPointManifest
+        extensions.Add(new BackofficeEntryPointManifest
         {
             Name = "simple-workspace-views.entrypoint",
             Alias = "simple-workspace-views.entrypoint",
