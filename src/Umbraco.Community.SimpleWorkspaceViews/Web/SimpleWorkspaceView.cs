@@ -12,7 +12,7 @@ public abstract class SimpleWorkspaceView : ISimpleWorkspaceView
     public virtual int Weight => 100;
     public virtual string Label => Name;
     public virtual string Name => Alias;
-    public string Alias => GetType().Name.TrimEnd("WorkspaceView");
+    public string Alias => GetType().Name.TrimEndExact("WorkspaceView");
     public string PathName => Alias.Kebaberize();
     public virtual string[] Workspaces => ["Umb.Workspace.Document"];
 }
