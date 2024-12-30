@@ -14,9 +14,10 @@ using Umbraco.Cms.Api.Management.Filters;
 using Umbraco.Cms.Core.Cache;
 using Umbraco.Cms.Web.Common.Authorization;
 using Umbraco.Community.SimpleWorkspaceViews.Core;
+using Umbraco.Community.SimpleWorkspaceViews.Web.Models;
 using Umbraco.Extensions;
 
-namespace Umbraco.Community.SimpleWorkspaceViews.Web;
+namespace Umbraco.Community.SimpleWorkspaceViews.Web.Controllers;
 
 [ApiExplorerSettings(GroupName = "Simple WorkspaceViews")]
 [SimpleWorkspaceViewsRoute("")]
@@ -39,17 +40,17 @@ public class SimpleWorkspaceViewController(
 
     [HttpGet("render/{workspaceView}")]
     [Produces<SimpleWorkspaceViewRenderModel>]
-    public async Task<IActionResult> Render(string workspaceView)
+    public async Task<IActionResult> Render(string workspaceView, Guid key)
     {
-        var dash = service.GetByPath(workspaceView);
-        if (dash == null)
+        var workspace = service.GetByAlias(workspaceView);
+        if (workspace == null)
         {
             _logger.LogWarning("Failed to find WorkspaceView {WorkspaceViewAlias}", workspaceView);
             return Ok(SimpleWorkspaceViewRenderModel.Error);
         }
 
-        var model = new WorkspaceViewModel(dash);
-        var path = $"~/Views/WorkspaceViews/{workspaceView}.cshtml";
+        var model = new WorkspaceViewModel(workspace, key);
+        var path = workspace.ViewPath;
         var result = viewEngine.GetView(null, path, false);
         if (result.Success)
         {
@@ -57,7 +58,7 @@ public class SimpleWorkspaceViewController(
             return Ok(body);
         }
 
-        var viewComponentName = dash.ViewComponent;
+        var viewComponentName = workspace.ViewComponent;
         if (ViewComponentExists(viewComponentName))
         {
             var body = await RenderAsync(viewComponentName, model);

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 
-namespace Umbraco.Community.SimpleWorkspaceViews.Web;
+namespace Umbraco.Community.SimpleWorkspaceViews.Web.Models;
 
 internal sealed class NullView : IView
 {

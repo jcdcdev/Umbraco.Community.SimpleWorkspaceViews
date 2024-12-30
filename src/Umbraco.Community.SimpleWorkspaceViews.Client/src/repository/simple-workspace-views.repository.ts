@@ -12,7 +12,7 @@ export class SimpleWorkspaceViewsRepository extends UmbControllerBase {
         this.#resource = new SimpleWorkspaceViewsDataSource(host);
     }
 
-    async render(alias: string): Promise<UmbDataSourceResponse<GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewResponse>> {
-        return await this.#resource.render(alias);
+    async render(alias: string, key: string): Promise<UmbDataSourceResponse<GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewResponse>> {
+        return await this.#resource.render(alias, key);
     }
 }

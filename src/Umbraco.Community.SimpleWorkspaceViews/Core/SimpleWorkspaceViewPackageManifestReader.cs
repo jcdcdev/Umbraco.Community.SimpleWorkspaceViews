@@ -36,12 +36,10 @@ public class SimpleWorkspaceViewPackageManifestReader(ISimpleWorkspaceViewServic
         {
             foreach (var workspace in workspaceView.Workspaces)
             {
-                var uniqueAlias = $"{workspaceView.Alias}-{workspace}";
-                var uniqueName = $"{workspaceView.Name} ({workspace})";
                 var manifest = new WorkspaceViewManifest
                 {
-                    Alias = uniqueAlias,
-                    Name = uniqueName,
+                    Alias =  workspaceView.UniqueAlias(workspace),
+                    Name = workspaceView.UniqueName(workspace),
                     ElementName = "simple-workspace-view",
                     Weight = workspaceView.Weight,
                     Meta = new WorkspaceViewManifest.MetaManifest

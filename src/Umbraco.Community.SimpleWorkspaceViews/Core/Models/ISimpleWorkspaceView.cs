@@ -7,8 +7,9 @@ public interface ISimpleWorkspaceView
     string[] Workspaces { get; }
     string Alias { get; }
     int Weight { get; }
-    string? Name { get; }
+    string Name { get; }
     string Label { get; }
     string PathName { get; }
     string Icon { get; }
+    bool HasAlias(string alias);
 }

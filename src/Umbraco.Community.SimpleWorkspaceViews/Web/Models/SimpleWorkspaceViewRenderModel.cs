@@ -1,6 +1,6 @@
 ﻿using Umbraco.Community.SimpleWorkspaceViews.Core;
 
-namespace Umbraco.Community.SimpleWorkspaceViews.Web;
+namespace Umbraco.Community.SimpleWorkspaceViews.Web.Models;
 
 public class SimpleWorkspaceViewRenderModel
 {
