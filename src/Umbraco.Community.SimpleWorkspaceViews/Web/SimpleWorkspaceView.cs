@@ -3,7 +3,7 @@ using Umbraco.Community.SimpleWorkspaceViews.Core;
 using Umbraco.Community.SimpleWorkspaceViews.Core.Models;
 using Umbraco.Extensions;
 
-namespace Umbraco.Community.SimpleWorkspaceViews.Web.Models;
+namespace Umbraco.Community.SimpleWorkspaceViews.Web;
 
 public abstract class SimpleWorkspaceView : ISimpleWorkspaceView
 {
