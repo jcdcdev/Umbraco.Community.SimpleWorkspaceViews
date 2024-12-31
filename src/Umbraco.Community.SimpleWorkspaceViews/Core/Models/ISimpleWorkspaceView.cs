@@ -1,4 +1,6 @@
-﻿namespace Umbraco.Community.SimpleWorkspaceViews.Core.Models;
+﻿using jcdcdev.Umbraco.Core.Web.Models.Manifests;
+
+namespace Umbraco.Community.SimpleWorkspaceViews.Core.Models;
 
 public interface ISimpleWorkspaceView
 {
@@ -11,5 +13,6 @@ public interface ISimpleWorkspaceView
     string Label { get; }
     string PathName { get; }
     string Icon { get; }
+    IConditionManifest[] Conditions { get; }
     bool HasAlias(string alias);
 }
