@@ -13,7 +13,6 @@ public abstract class SimpleWorkspaceView : ISimpleWorkspaceView
     public virtual string ViewComponent => $"{Alias}WorkspaceView";
     public virtual string Icon => "document";
     public virtual IConditionManifest[] Conditions => BuildConditions().ToArray();
-
     public virtual int Weight => 100;
     public virtual string Label => Name;
     public virtual string Name => Alias;

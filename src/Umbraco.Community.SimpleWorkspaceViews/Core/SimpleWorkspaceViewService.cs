@@ -10,8 +10,6 @@ public class SimpleWorkspaceViewService(
     : ISimpleWorkspaceViewService
 {
     public ISimpleWorkspaceView? GetByAlias(string alias) => simpleWorkspaceViews.FirstOrDefault(x => x.HasAlias(alias));
-
     public ISimpleWorkspaceView? GetByPath(string path) => simpleWorkspaceViews.FirstOrDefault(x => x.PathName.InvariantEquals(path));
-
     public IEnumerable<ISimpleWorkspaceView> GetAll() => simpleWorkspaceViews;
 }
