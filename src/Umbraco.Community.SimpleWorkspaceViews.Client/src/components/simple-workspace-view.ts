@@ -4,6 +4,8 @@ import {UmbElementMixin} from "@umbraco-cms/backoffice/element-api";
 import {UUITextStyles} from "@umbraco-cms/backoffice/external/uui";
 import {SIMPLE_WORKSPACE_VIEWS_CONTEXT_TOKEN} from "../context/simple-workspace-views.context";
 import {unsafeHTML} from 'lit/directives/unsafe-html.js';
+import {UMB_ENTITY_CONTEXT} from '@umbraco-cms/backoffice/entity';
+import {ManifestWorkspaceView} from "@umbraco-cms/backoffice/workspace";
 
 @customElement('simple-workspace-view')
 export class SimpleWorkspaceView extends UmbElementMixin(LitElement) {
@@ -12,15 +14,25 @@ export class SimpleWorkspaceView extends UmbElementMixin(LitElement) {
     content: string | undefined;
     @state()
     loading: boolean = true;
+    @state()
+    contentKey?: string;
+    @state()
+    workspaceAlias?: string;
 
     constructor() {
         super();
-        const url = window.location.pathname;
-        const urlArray = url.split('/');
-        const lastSegment = urlArray[urlArray.length - 1];
+        this.consumeContext(UMB_ENTITY_CONTEXT, (context) => {
+            this.contentKey = context.getUnique() ?? undefined;
+        });
 
         this.consumeContext(SIMPLE_WORKSPACE_VIEWS_CONTEXT_TOKEN, async (context) => {
-            const response = await context.render(lastSegment);
+            // @ts-ignore
+            const manifest = this.manifest as ManifestWorkspaceView;
+            this.workspaceAlias = manifest.alias;
+            if (!this.contentKey) {
+                return;
+            }
+            const response = await context.render(this.workspaceAlias, this.contentKey);
             this.loading = false;
             this.content = response.data?.body;
         });
@@ -33,7 +45,9 @@ export class SimpleWorkspaceView extends UmbElementMixin(LitElement) {
 
         return html`
             <div class="uui-text">
-                ${this.content ? unsafeHTML(this.content) : html`<p>Workspace View not found</p>`}
+                ${this.content ? unsafeHTML(this.content) : html`
+                    <p>Workspace View not found</p>
+                `}
             </div>
         `
     }

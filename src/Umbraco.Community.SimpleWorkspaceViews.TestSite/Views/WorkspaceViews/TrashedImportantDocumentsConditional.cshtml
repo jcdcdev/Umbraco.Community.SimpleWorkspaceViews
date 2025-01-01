@@ -1,0 +1,13 @@
+@using Umbraco.Cms.Core.Services
+@inherits Umbraco.Community.SimpleWorkspaceViews.Web.WorkspaceViewViewPage
+@inject IContentService ContentService
+@{
+    var content = ContentService.GetById(Model.ContentKey);
+    if (content == null)
+    {
+        return;
+    }
+}
+<uui-box headline="@content.Name">
+    <p>This content is needed for your bespoke website to work!</p>
+</uui-box>

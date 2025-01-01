@@ -8,6 +8,7 @@ import type { GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewData, GetU
 /**
  * @param data The data for the request.
  * @param data.workspaceView
+ * @param data.key
  * @returns unknown OK
  * @throws ApiError
  */
@@ -17,6 +18,9 @@ export const getUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceView = (data: G
         url: '/umbraco/SimpleWorkspaceViews/api/v1/render/{workspaceView}',
         path: {
             workspaceView: data.workspaceView
+        },
+        query: {
+            key: data.key
         }
     });
 };

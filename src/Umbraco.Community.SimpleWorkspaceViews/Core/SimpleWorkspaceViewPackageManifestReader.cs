@@ -36,12 +36,10 @@ public class SimpleWorkspaceViewPackageManifestReader(ISimpleWorkspaceViewServic
         {
             foreach (var workspace in workspaceView.Workspaces)
             {
-                var uniqueAlias = $"{workspaceView.Alias}-{workspace}";
-                var uniqueName = $"{workspaceView.Name} ({workspace})";
                 var manifest = new WorkspaceViewManifest
                 {
-                    Alias = uniqueAlias,
-                    Name = uniqueName,
+                    Alias = workspaceView.UniqueAlias(workspace),
+                    Name = workspaceView.UniqueName(workspace),
                     ElementName = "simple-workspace-view",
                     Weight = workspaceView.Weight,
                     Meta = new WorkspaceViewManifest.MetaManifest
@@ -50,14 +48,7 @@ public class SimpleWorkspaceViewPackageManifestReader(ISimpleWorkspaceViewServic
                         Pathname = workspaceView.PathName,
                         Icon = workspaceView.Icon
                     },
-                    Conditions =
-                    [
-                        new ConditionManifest
-                        {
-                            Alias = "Umb.Condition.WorkspaceAlias",
-                            Match = workspace
-                        }
-                    ]
+                    Conditions = workspaceView.Conditions.Any() ? workspaceView.Conditions : [ConditionManifest.WorkspaceAlias(workspace)]
                 };
                 extensions.Add(manifest);
             }

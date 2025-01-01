@@ -13,7 +13,7 @@ export const SIMPLE_WORKSPACE_VIEWS_CONTEXT_TOKEN =
     new UmbContextToken<SimpleWorkspaceViewsContext>("SimpleWorkspaceViewsContext");
 
 export interface ISimpleWorkspaceViewsDataSource {
-    render(alias: string): Promise<UmbDataSourceResponse<GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewResponse>>;
+    render(alias: string, key: string): Promise<UmbDataSourceResponse<GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewResponse>>;
 }
 
 export class SimpleWorkspaceViewsDataSource implements ISimpleWorkspaceViewsDataSource {
@@ -24,9 +24,10 @@ export class SimpleWorkspaceViewsDataSource implements ISimpleWorkspaceViewsData
         this.#host = host;
     }
 
-    async render(alias: string): Promise<UmbDataSourceResponse<GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewResponse>> {
+    async render(alias: string, key: string): Promise<UmbDataSourceResponse<GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewResponse>> {
         const data: GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewData = {
             workspaceView: alias,
+            key: key
         };
         return await tryExecuteAndNotify(this.#host, getUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceView(data))
     }

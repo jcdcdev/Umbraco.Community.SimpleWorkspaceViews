@@ -1,5 +1,5 @@
 ﻿using Umbraco.Cms.Web.Common.Routing;
 
-namespace Umbraco.Community.SimpleWorkspaceViews.Web;
+namespace Umbraco.Community.SimpleWorkspaceViews.Web.Controllers;
 
 public class SimpleWorkspaceViewsRouteAttribute(string template) : BackOfficeRouteAttribute($"SimpleWorkspaceViews/api/v{{version:apiVersion}}/{template.TrimStart('/')}");

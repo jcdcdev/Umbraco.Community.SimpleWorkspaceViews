@@ -5,6 +5,7 @@ export type SimpleWorkspaceViewRenderModel = {
 };
 
 export type GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewData = {
+    key?: string;
     workspaceView: string;
 };
 
