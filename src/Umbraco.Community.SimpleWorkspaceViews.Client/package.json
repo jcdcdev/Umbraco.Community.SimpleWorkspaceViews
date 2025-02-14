@@ -13,10 +13,10 @@
 		"lit": "^3.2.1"
 	},
 	"devDependencies": {
-		"@hey-api/openapi-ts": "^0.61.3",
+		"@hey-api/openapi-ts": "^0.62.2",
 		"@umbraco-cms/backoffice": "^15.1.2",
 		"typescript": "^5.7.3",
-		"vite": "^6.0.9"
+		"vite": "^6.0.10"
 	},
 	"volta": {
 		"node": "20.18.0"
