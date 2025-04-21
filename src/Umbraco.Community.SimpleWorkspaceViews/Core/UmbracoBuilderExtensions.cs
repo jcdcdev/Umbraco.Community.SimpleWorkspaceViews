@@ -18,7 +18,7 @@ public static class UmbracoBuilderExtensions
 
         builder.Services.ConfigureOptions<ConfigApiSwaggerGenOptions>();
         builder.Services.AddSingleton<ISimpleWorkspaceViewService, SimpleWorkspaceViewService>();
-        builder.Services.AddSingleton<IPackageManifestReader, SimpleWorkspaceViewPackageManifestReader>();
+        builder.Services.AddSingleton<IPackageManifestReader, PackageManifestReader>();
     }
 
     private static SimpleWorkspaceViewCollectionBuilder SimpleWorkspaceViews(this IUmbracoBuilder builder) => builder.WithCollectionBuilder<SimpleWorkspaceViewCollectionBuilder>();
