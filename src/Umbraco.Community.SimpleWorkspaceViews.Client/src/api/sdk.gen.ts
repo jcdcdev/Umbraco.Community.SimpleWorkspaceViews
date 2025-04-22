@@ -11,10 +11,12 @@ import type { GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewData, GetU
  * @returns unknown OK
  * @throws ApiError
  */
-export const getUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceView = (data: GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewData): CancelablePromise<GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewResponse> => { return __request(OpenAPI, {
-    method: 'GET',
-    url: '/umbraco/SimpleWorkspaceViews/api/v1/render/{workspaceView}',
-    path: {
-        workspaceView: data.workspaceView
-    }
-}); };
+export const getUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceView = (data: GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewData): CancelablePromise<GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewResponse> => {
+    return __request(OpenAPI, {
+        method: 'GET',
+        url: '/umbraco/SimpleWorkspaceViews/api/v1/render/{workspaceView}',
+        path: {
+            workspaceView: data.workspaceView
+        }
+    });
+};
