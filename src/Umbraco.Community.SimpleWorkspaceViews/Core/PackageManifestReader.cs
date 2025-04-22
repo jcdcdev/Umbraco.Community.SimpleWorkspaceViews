@@ -1,11 +1,12 @@
-﻿using jcdcdev.Umbraco.Core.Extensions;
+﻿using System.Reflection;
+using jcdcdev.Umbraco.Core.Extensions;
 using jcdcdev.Umbraco.Core.Web.Models.Manifests;
 using Umbraco.Cms.Core.Manifest;
 using Umbraco.Cms.Infrastructure.Manifest;
 
 namespace Umbraco.Community.SimpleWorkspaceViews.Core;
 
-public class SimpleWorkspaceViewPackageManifestReader(ISimpleWorkspaceViewService simpleWorkspaceViewService) : IPackageManifestReader
+public class PackageManifestReader(ISimpleWorkspaceViewService simpleWorkspaceViewService) : IPackageManifestReader
 {
     public Task<IEnumerable<PackageManifest>> ReadPackageManifestsAsync()
     {
@@ -19,7 +20,7 @@ public class SimpleWorkspaceViewPackageManifestReader(ISimpleWorkspaceViewServic
         var packageManifest = new PackageManifest
         {
             Name = Constants.PackageName,
-            Version = EnvironmentExtensions.CurrentAssemblyVersion().ToSemVer()?.ToString() ?? "0.1.0",
+            Version = Assembly.GetAssembly(typeof(PackageManifestReader))?.GetName().Version?.ToSemVer()?.ToString() ?? "0.1.0",
             AllowPublicAccess = false,
             AllowTelemetry = true,
             Extensions = []

@@ -18,6 +18,7 @@ jobs:
           project-path: src/Umbraco.Community.SimpleWorkspaceViews/Umbraco.Community.SimpleWorkspaceViews.csproj
           npm-working-dir: src/Umbraco.Community.SimpleWorkspaceViews.Client
           npm-enabled: true
+          npm-version: "22.x"
           umbraco-version: 15
           dotnet-version: "9"
       - name: Release
