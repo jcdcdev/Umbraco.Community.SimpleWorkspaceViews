@@ -10,6 +10,7 @@ public static class UmbracoBuilderExtensions
 {
     public static void AddSimpleWorkspaceViews(this IUmbracoBuilder builder)
     {
+        builder.SimpleWorkspaceViews();
         var types = builder.TypeLoader.GetTypes<ISimpleWorkspaceView>();
         foreach (var type in types)
         {
