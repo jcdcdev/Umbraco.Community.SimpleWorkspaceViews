@@ -15,6 +15,11 @@ Looking for Umbraco Content Apps? Check out [Umbraco.Community.SimpleContentApps
 - Supports both Views & View Components
 - Easy to define section permissions
 
+> [!IMPORTANT]
+> Version 14 will only receive security updates and no new features.
+
+> Please review the [security policy](https://github.com/jcdcdev/Umbraco.Community.SimpleWorkspaceViews?tab=security-ov-file#supported-versions) for more information.
+
 ## Quick Start
 
 ### Install Package
