@@ -5,8 +5,25 @@ export type SimpleWorkspaceViewRenderModel = {
 };
 
 export type GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewData = {
-    key?: string;
-    workspaceView: string;
+    body?: never;
+    path: {
+        workspaceView: string;
+    };
+    query?: {
+        key?: string;
+    };
+    url: '/umbraco/SimpleWorkspaceViews/api/v1/render/{workspaceView}';
 };
 
-export type GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewResponse = ((SimpleWorkspaceViewRenderModel));
+export type GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewResponses = {
+    /**
+     * OK
+     */
+    200: SimpleWorkspaceViewRenderModel;
+};
+
+export type GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewResponse = GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewResponses[keyof GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewResponses];
+
+export type ClientOptions = {
+    baseUrl: 'http://localhost:54813' | (string & {});
+};
