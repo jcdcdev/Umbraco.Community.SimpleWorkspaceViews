@@ -15,47 +15,10 @@ Looking for Umbraco Content Apps? Check out [Umbraco.Community.SimpleContentApps
 - Supports both Views & View Components
 - Easy to define section permissions
 
-> [!IMPORTANT]
-> Version 14 will only receive security updates and no new features.
+> [!WARNING]
+> Version 14 is no longer supported and is End of Life (EOL).
 
 > Please review the [security policy](https://github.com/jcdcdev/Umbraco.Community.SimpleWorkspaceViews?tab=security-ov-file#supported-versions) for more information.
-
-## Quick Start
-
-### Install Package
-
-```csharp
-dotnet add package Umbraco.Community.SimpleWorkspaceViews 
-```
-
-### Register WorkspaceView
-
-By default, this will display in the content section for Admins only.
-
-```csharp title="BasicWorkspaceView.cs"
-using Umbraco.Community.SimpleWorkspaceViews.Core; 
-public class BasicWorkspaceView : SimpleWorkspaceView { }
-```
-
-### Create View
-
-- Your view **must** go in `/Views/WorkspaceViews`
-- You view **must** be the name of your C# class (without `WorkspaceView`)
-    - For example: `BasicWorkspaceView.cs` => `/Views/WorkspaceViews/Basic.cshtml`
-
-```razor title="Views/WorkspaceViews/Basic.cs"
-@inherits Umbraco.Community.SimpleWorkspaceViews.Web.WorkspaceViewViewPage
-
-<uui-box headline="Hello Umbraco">
-    <p>My WorkspaceView is: @Model.WorkspaceView.Alias</p>
-</uui-box>
-```
-### More examples
-
-Check out [docs/examples.md](https://github.com/jcdcdev/Umbraco.Community.SimpleWorkspaceViews/blob/v15/docs/examples.md) for more complex examples.
-
-
-
 
 ## Contributing
 
