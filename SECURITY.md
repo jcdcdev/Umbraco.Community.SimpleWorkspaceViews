@@ -9,8 +9,12 @@ The following table outlines the versions of the project that are currently supp
 
 | Package Version                                                                            | Umbraco Version | Security Phase Start | End of Life |
 | ---------------------------------------------------------------------------------- | --------------- | -------------------- | ----------- |
-| [14.x](https://github.com/jcdcdev/Umbraco.Community.SimpleWorkspaceViews/tree/v14) | 14 | 2025-03-02 | 2025-05-30 |
 | [15.x](https://github.com/jcdcdev/Umbraco.Community.SimpleWorkspaceViews/tree/v15) | 15 | 2025-08-14 | 2025-11-14 |
+## Unsupported Versions
+
+| Package Version                                                               |  Umbraco Version  | End of Life |
+| ---------------------------------------------------------------------------------- | ---------------  | ----------- |
+| [14.x](https://github.com/jcdcdev/Umbraco.Community.SimpleWorkspaceViews/tree/v14) | 14 | 2025-05-30 |
 
 
 ## Future Support
