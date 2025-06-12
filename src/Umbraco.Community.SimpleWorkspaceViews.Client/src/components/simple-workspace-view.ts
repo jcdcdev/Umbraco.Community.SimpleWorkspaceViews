@@ -22,10 +22,19 @@ export class SimpleWorkspaceView extends UmbElementMixin(LitElement) {
     constructor() {
         super();
         this.consumeContext(UMB_ENTITY_CONTEXT, (context) => {
+            if (!context) {
+                console.error('No entity context found');
+                return;
+            }
             this.contentKey = context.getUnique() ?? undefined;
         });
 
         this.consumeContext(SIMPLE_WORKSPACE_VIEWS_CONTEXT_TOKEN, async (context) => {
+            if (!context) {
+                console.error('No simple workspace views context found');
+                return;
+            }
+
             // @ts-ignore
             const manifest = this.manifest as ManifestWorkspaceView;
             this.workspaceAlias = manifest.alias;

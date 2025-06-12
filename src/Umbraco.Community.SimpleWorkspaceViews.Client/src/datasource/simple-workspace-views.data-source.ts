@@ -1,12 +1,8 @@
 ﻿import {UmbControllerHost} from "@umbraco-cms/backoffice/controller-api";
 import {UmbDataSourceResponse} from "@umbraco-cms/backoffice/repository";
-import {tryExecuteAndNotify} from "@umbraco-cms/backoffice/resources";
+import {tryExecute} from "@umbraco-cms/backoffice/resources";
 import {UmbContextToken} from "@umbraco-cms/backoffice/context-api";
-import {
-    getUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceView,
-    GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewData,
-    GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewResponse
-} from "../api";
+import {GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewResponse, SimpleWorkspaceViewsService} from "../api";
 import {SimpleWorkspaceViewsContext} from "../context/simple-workspace-views.context";
 
 export const SIMPLE_WORKSPACE_VIEWS_CONTEXT_TOKEN =
@@ -25,10 +21,15 @@ export class SimpleWorkspaceViewsDataSource implements ISimpleWorkspaceViewsData
     }
 
     async render(alias: string, key: string): Promise<UmbDataSourceResponse<GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewResponse>> {
-        const data: GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewData = {
-            workspaceView: alias,
-            key: key
+        const options = {
+            path: {
+                workspaceView: alias,
+            },
+            query: {
+                key: key
+            }
         };
-        return await tryExecuteAndNotify(this.#host, getUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceView(data))
+
+        return await tryExecute(this.#host, SimpleWorkspaceViewsService.getUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceView(options))
     }
 }
