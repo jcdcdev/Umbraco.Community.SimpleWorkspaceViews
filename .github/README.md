@@ -15,6 +15,9 @@ Looking for Umbraco Content Apps? Check out [Umbraco.Community.SimpleContentApps
 - Supports both Views & View Components
 - Easy to define section permissions
 
+> [!NOTE]
+> Version 17 is not released yet.
+
 ## Quick Start
 
 ### Install Package
