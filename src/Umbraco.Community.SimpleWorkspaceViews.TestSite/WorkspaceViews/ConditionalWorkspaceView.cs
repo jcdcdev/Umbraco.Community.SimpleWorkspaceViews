@@ -1,5 +1,4 @@
 using jcdcdev.Umbraco.Core;
-using jcdcdev.Umbraco.Core.Web.Models.Manifests;
 using Umbraco.Community.SimpleWorkspaceViews.Web;
 
 namespace Umbraco.Community.SimpleWorkspaceViews.TestSite.WorkspaceViews;
