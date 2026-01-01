@@ -15,7 +15,6 @@ Looking for Umbraco Content Apps? Check out [Umbraco.Community.SimpleContentApps
 - Supports both Views & View Components
 - Easy to define section permissions
 
-
 ## Quick Start
 
 ### Install Package
@@ -49,8 +48,6 @@ public class BasicWorkspaceView : SimpleWorkspaceView { }
 ### More examples
 
 Check out [docs/examples.md](https://github.com/jcdcdev/Umbraco.Community.SimpleWorkspaceViews/blob/v15/docs/examples.md) for more complex examples.
-
-
 
 
 ## Contributing
