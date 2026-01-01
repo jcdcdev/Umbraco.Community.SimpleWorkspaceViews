@@ -16,13 +16,15 @@ Looking for Umbraco Content Apps? Check out [Umbraco.Community.SimpleContentApps
 - Supports both Views & View Components
 - Easy to define section permissions
 
-## Quick Start
+## Installation
 
 ### Install Package
 
 ```csharp
 dotnet add package Umbraco.Community.SimpleWorkspaceViews 
 ```
+
+## Quick Start
 
 ### Register WorkspaceView
 
