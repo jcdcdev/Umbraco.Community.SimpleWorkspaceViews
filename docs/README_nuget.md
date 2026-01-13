@@ -20,7 +20,7 @@ Looking for Umbraco Content Apps? Check out [Umbraco.Community.SimpleContentApps
 
 ### Install Package
 
-```csharp
+```powershell
 dotnet add package Umbraco.Community.SimpleWorkspaceViews 
 ```
 
