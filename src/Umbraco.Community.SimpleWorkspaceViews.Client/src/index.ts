@@ -1,6 +1,6 @@
 import {UMB_AUTH_CONTEXT} from "@umbraco-cms/backoffice/auth";
 import {client} from './api';
-import {UmbEntryPointOnInit} from "@umbraco-cms/backoffice/extension-api";
+import type {UmbEntryPointOnInit} from "@umbraco-cms/backoffice/extension-api";
 import {ManifestLocalizations} from "./lang/manifests.ts";
 import {SimpleWorkspaceViewsContext} from "./context/simple-workspace-views.context.ts";
 import './components/simple-workspace-view.ts';
