@@ -6,59 +6,49 @@ import {SIMPLE_WORKSPACE_VIEWS_CONTEXT_TOKEN} from "../context/simple-workspace-
 import {unsafeHTML} from 'lit/directives/unsafe-html.js';
 import {UMB_ENTITY_CONTEXT} from '@umbraco-cms/backoffice/entity';
 import {ManifestWorkspaceView} from "@umbraco-cms/backoffice/workspace";
+import {HtmlScriptContentRuntime} from "../utils/html-script-content-runtime";
 
 @customElement('simple-workspace-view')
 export class SimpleWorkspaceView extends UmbElementMixin(LitElement) {
 
-    @state()
-    content: string | undefined;
-    @state()
-    loading: boolean = true;
-    @state()
-    contentKey?: string;
-    @state()
-    workspaceAlias?: string;
+    @state() private content: string | undefined;
+    @state() private loading = true;
+
+    private contentKey?: string;
+    private workspaceAlias?: string;
+    private readonly runtime = new HtmlScriptContentRuntime();
 
     constructor() {
         super();
+
         this.consumeContext(UMB_ENTITY_CONTEXT, (context) => {
-            if (!context) {
-                console.error('No entity context found');
-                return;
-            }
-            this.contentKey = context.getUnique() ?? undefined;
+            this.contentKey = context?.getUnique() ?? undefined;
         });
 
         this.consumeContext(SIMPLE_WORKSPACE_VIEWS_CONTEXT_TOKEN, async (context) => {
-            if (!context) {
-                console.error('No simple workspace views context found');
-                return;
-            }
+            if (!context || !this.contentKey) return;
 
             // @ts-ignore
-            const manifest = this.manifest as ManifestWorkspaceView;
-            this.workspaceAlias = manifest.alias;
-            if (!this.contentKey) {
-                return;
-            }
+            this.workspaceAlias = (this.manifest as ManifestWorkspaceView).alias;
             const response = await context.render(this.workspaceAlias, this.contentKey);
-            this.loading = false;
             this.content = response.data?.body;
+            this.loading = false;
         });
     }
 
-    render() {
-        if (this.loading) {
-            return nothing;
-        }
+    protected updated(): void {
+        void this.runtime.executeScripts(this.content, this.renderRoot);
+    }
 
+    render() {
+        if (this.loading) return nothing;
+
+        const body = this.runtime.extractHtml(this.content);
         return html`
             <div class="uui-text">
-                ${this.content ? unsafeHTML(this.content) : html`
-                    <p>Workspace View not found</p>
-                `}
+                ${body ? unsafeHTML(body) : html`<p>Workspace View not found</p>`}
             </div>
-        `
+        `;
     }
 
     static styles = [
@@ -70,14 +60,13 @@ export class SimpleWorkspaceView extends UmbElementMixin(LitElement) {
                 gap: var(--uui-size-4);
                 padding: var(--uui-size-layout-1);
             }
-
             pre {
                 font-family: monospace;
                 background-color: var(--uui-color-background);
-                padding: var(--uui-size-layout-1)
+                padding: var(--uui-size-layout-1);
             }
         `
-    ]
+    ];
 }
 
 declare global {
