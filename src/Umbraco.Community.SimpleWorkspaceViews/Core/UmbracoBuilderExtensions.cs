@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Umbraco.Cms.Api.Common.OpenApi;
+using Umbraco.Cms.Api.Management.OpenApi;
 using Umbraco.Cms.Core.DependencyInjection;
 using Umbraco.Cms.Infrastructure.Manifest;
 using Umbraco.Community.SimpleWorkspaceViews.Core.Models;
@@ -17,7 +19,10 @@ public static class UmbracoBuilderExtensions
             builder.SimpleWorkspaceViews().Append(type);
         }
 
-        builder.Services.ConfigureOptions<ConfigApiSwaggerGenOptions>();
+        builder.AddBackOfficeOpenApiDocument(Constants.Api.ApiName, document => document
+            .WithTitle(Constants.PackageName)
+            .WithBackOfficeAuthentication());
+
         builder.Services.AddSingleton<ISimpleWorkspaceViewService, SimpleWorkspaceViewService>();
         builder.Services.AddSingleton<IPackageManifestReader, PackageManifestReader>();
     }

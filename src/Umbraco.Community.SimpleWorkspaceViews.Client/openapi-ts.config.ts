@@ -1,26 +1,31 @@
-import { defineConfig, defaultPlugins } from '@hey-api/openapi-ts';
+import {defineConfig} from '@hey-api/openapi-ts';
 
 export default defineConfig({
-    input: 'http://localhost:54813/umbraco/swagger/SimpleWorkspaceViews/swagger.json',
+    input: 'http://localhost:54900/umbraco/openapi/SimpleWorkspaceViews.json',
     plugins: [
-        ...defaultPlugins,
+        {
+            name: '@hey-api/sdk',
+            operations: {
+                containerName: {
+                    name: 'SimpleWorkspaceViews',
+                    casing: 'preserve',
+                },
+                strategy: 'byTags'
+            }
+        },
         {
             name: '@hey-api/client-fetch',
+            runtimeConfigPath: './src/hey-api.ts',
             exportFromIndex: true,
             throwOnError: true,
         },
+        '@hey-api/schemas',
         {
+            enums: 'javascript',
             name: '@hey-api/typescript',
-            enums: 'typescript',
-            readOnlyWriteOnlyBehavior: 'off',
         },
-        {
-            name: '@hey-api/sdk',
-            asClass: true,
-        }
     ],
     output: {
-        format: 'prettier',
         path: './src/api',
     }
 });

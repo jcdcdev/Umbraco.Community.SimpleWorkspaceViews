@@ -3,7 +3,7 @@ import {UmbControllerHost} from "@umbraco-cms/backoffice/controller-api";
 import {UmbContextToken} from "@umbraco-cms/backoffice/context-api";
 import {UmbControllerBase} from "@umbraco-cms/backoffice/class-api";
 import {UmbDataSourceResponse} from "@umbraco-cms/backoffice/repository";
-import {GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewResponse} from "../api";
+import {SimpleWorkspaceViewRenderModel} from "../api";
 
 export const SIMPLE_WORKSPACE_VIEWS_CONTEXT_TOKEN =
     new UmbContextToken<SimpleWorkspaceViewsContext>("SimpleWorkspaceViewContext");
@@ -17,7 +17,7 @@ export class SimpleWorkspaceViewsContext extends UmbControllerBase {
         this.#repository = new SimpleWorkspaceViewsRepository(this);
     }
 
-    async render(alias: string, key: string): Promise<UmbDataSourceResponse<GetUmbracoSimpleWorkspaceViewsApiV1RenderByWorkspaceViewResponse>> {
+    async render(alias: string, key: string): Promise<UmbDataSourceResponse<SimpleWorkspaceViewRenderModel>> {
         return await this.#repository.render(alias, key);
     }
 }
